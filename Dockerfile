@@ -5,7 +5,7 @@ ENV PYTHONOPTIMIZE=1
 WORKDIR /app
 COPY . /app/
 
-RUN pip install --no-cache-dir 
+RUN pip install --no-cache-dir  quart patchright logmagix
 RUN python -m patchright install-deps
 RUN python -m patchright install chromium
 
