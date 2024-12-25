@@ -6,10 +6,10 @@ WORKDIR /app
 COPY . /app/
 
 RUN apt-get update && apt-get install -y xvfb
-RUN pip install --no-cache-dir  xvfbwrapper patchright Flask uvicorn
+RUN pip install --no-cache-dir  xvfbwrapper patchright Flask[async] gunicorn
 RUN python -m patchright install-deps chromium
 RUN python -m patchright install chromium
 
 EXPOSE 5000
-CMD ["uvicorn","app:app","--host","0.0.0.0","--port","5000"]
+CMD ["gunicorn","-w"."4","-b","0.0.0.0:5000","app:app"]
 
