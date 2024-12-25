@@ -7,10 +7,10 @@ COPY . /app/
 
 # Install necessary packages and dependencies
 RUN apt-get update && apt-get install -y xvfb
-RUN pip install --no-cache-dir xvfbwrapper patchright Flask[async] gunicorn
+RUN pip install --no-cache-dir xvfbwrapper patchright Flask[async]
 RUN python -m patchright install-deps chromium
 RUN python -m patchright install chromium
 
 # Expose port 5000
 EXPOSE 5000
-CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:5000", "app:app"]
+CMD ["fastapi", "run", "app.py", "--port", "5000"]
