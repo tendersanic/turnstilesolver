@@ -32,14 +32,7 @@ async def solver(site,sitekey):
             no_viewport=True,
             args = [
               "--no-sandbox",
-              "--disable-blink-features=AutomationControlled",
-              "--disable-gpu",
-              "--disable-software-rasterizer",
-              "--disable-dev-shm-usage",
-              "--disable-extensions",
-              "--incognito",
-              "--disable-features=IsolateOrigins,site-per-process",
-              "--disable-background-networking"
+              "--disable-blink-features=AutomationControlled"
           ]
         )
         page = await browser.new_page()
@@ -49,6 +42,7 @@ async def solver(site,sitekey):
 
         for i in range(10):
             attrib = await page.evaluate("window.document.getElementById('result').innerHTML")
+            print(attrib)
             if 'value' in attrib and '""' not in attrib:
                 value = await page.evaluate("window.document.querySelector('[name=\"cf-turnstile-response\"]').value")
                 return {
