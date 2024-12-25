@@ -11,5 +11,5 @@ RUN python -m patchright install-deps chromium
 RUN python -m patchright install chromium
 
 EXPOSE 5000
-CMD ["uvicorn","app:app","--host 0.0.0.0","--port","5000"]
+CMD ["uvicorn","app:app","--host","0.0.0.0","--port","5000"]
 
