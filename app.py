@@ -1,12 +1,15 @@
-from flask import Flask, jsonify
 import solver
+from fastapi import FastAPI
 
-app = Flask(__name__)
+app = FastAPI()
 
-@app.route('/solve')
-async def async_view():
+
+@app.get("/")
+def read_root():
+    return {"Hello": "World"}
+
+
+@app.get("/solve")
+async def solve():
     response = await solver.solver("https://modrinth.com/auth/sign-up","0x4AAAAAAAHWfmKCm7cUG869");
-    return jsonify(response)
-
-if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    return response;
