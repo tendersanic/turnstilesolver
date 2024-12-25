@@ -5,9 +5,11 @@ ENV PYTHONOPTIMIZE=1
 WORKDIR /app
 COPY . /app/
 
-RUN pip install --no-cache-dir  quart patchright logmagix
-RUN python -m patchright install-deps
+RUN apt-get update && apt-get install -y xvfb
+RUN pip install --no-cache-dir  xvfbwrapper patchright Flask uvicorn
+RUN python -m patchright install-deps chromium
 RUN python -m patchright install chromium
 
 EXPOSE 5000
-CMD ["python", "main.py"]
+CMD ["uvicorn","app:app","--host 0.0.0.0","--port","5000"]
+
