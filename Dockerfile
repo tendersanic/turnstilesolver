@@ -7,7 +7,7 @@ COPY . /app/
 
 # Install necessary packages and dependencies
 RUN apt-get update && apt-get install -y xvfb
-RUN pip install --no-cache-dir xvfbwrapper patchright Flask[async]
+RUN pip install --no-cache-dir xvfbwrapper patchright fastapi
 RUN python -m patchright install-deps chromium
 RUN python -m patchright install chromium
 
