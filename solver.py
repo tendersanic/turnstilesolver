@@ -45,6 +45,8 @@ async def solver(site,sitekey):
             print(attrib)
             if 'value' in attrib and '""' not in attrib:
                 value = await page.evaluate("window.document.querySelector('[name=\"cf-turnstile-response\"]').value")
+                await browser.close()
+                vdisplay.stop()
                 return {
                     "token":value,
                     "status":"WORKED"
