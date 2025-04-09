@@ -11,5 +11,5 @@ def read_root():
 
 @app.get("/solve")
 async def solve():
-    response = await solver.solver("https://d000d.com/e/b0pckrukog0h","0x4AAAAAAALn0BYsCrtFUbm_");
+    response = await solver.solver("https://modrinth.com/auth/sign-up","0x4AAAAAAAHWfmKCm7cUG869");
     return response;
