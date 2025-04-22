@@ -37,7 +37,17 @@ jobs:
       - name: Call /solve endpoint
         run: |
           echo "Calling /solve..."
-          curl -s http://localhost:5000/solve
+          curl -X GET http://localhost:5000/solve
+
+      - name: Call /solve endpoint
+        run: |
+          echo "Calling /solve..."
+          curl -X GET http://localhost:5000/solve
+
+      - name: Call /solve endpoint
+        run: |
+          echo "Calling /solve..."
+          curl -X GET http://localhost:5000/solve
 
       - name: Output logs (optional)
         run: cat server.log
